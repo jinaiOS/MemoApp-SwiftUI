@@ -21,10 +21,11 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            TextField("title", text: $memo.title, onEditingChanged: { _ in
+            TextField("제목을 입력하시오.", text: $memo.title, onEditingChanged: { _ in
                 
             })
             .font(.title)
+            .padding(.horizontal)
             
             ZStack(alignment: .leading) {
                 if memo.content == "" { // text editor placeholder

@@ -11,8 +11,7 @@ struct ContentView: View {
     
     @EnvironmentObject var modelData: ModelData // 전달 없이 공용으로 사용 가능
     @State private var searchText = "" // 변수값이 변경되면 view 를 다시 랜더링 하기 때문에 항상 최신 값을 가짐
-    @State var showDetailView = false
-    @State var showAddFolderView = false
+    @State var showAddFolderView = false // modal 띄우는 bool
     
     var body: some View {
         NavigationView {
@@ -46,14 +45,17 @@ struct ContentView: View {
                     Spacer()
                     
                     NavigationLink {
-                        
+                        ForEach(modelData.memos) { memo in
+                            DetailView(memo: memo)
+                        }
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }
                 }
             }
             .sheet(isPresented: $showAddFolderView) {
-                AddFolderView(showAddFolderView: $showAddFolderView)
+                AddFolderView()
+                // modal present toggle sheet
             }
         }
         .accentColor(.yellow) // navigationview 글자 색상

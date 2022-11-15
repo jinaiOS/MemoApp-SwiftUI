@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct AddFolderView: View {
-    @Binding var showAddFolderView: Bool
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode // 화면 이동 설정
     @EnvironmentObject var modelData: ModelData
     
     @State var folderName: String = "새로운 폴더"
