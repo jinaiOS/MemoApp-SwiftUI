@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailView: View {
     // viewmodel 선언할 때 주로 사용하는 프로퍼티래퍼
     // 프로토콜 준수하면 objectWillChange.send()라는 함수가 생기고 이 함수를 호출하면 뷰를 다시 그림
-//    @ObservedObject var memo: MemoEntity
+    //    @ObservedObject var memo: MemoEntity
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     // state의 변수값이 변경될 때 view 다시 계산하여 그림
     // view의 body에서만 접근해야 함 Private 선언 권장
@@ -21,11 +21,9 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            TextField("제목을 입력하시오.", text: $memo.title, onEditingChanged: { _ in
-                
-            })
-            .font(.title)
-            .padding(.horizontal)
+            TextField("제목을 입력하시오.", text: $memo.title)
+                .font(.title)
+                .padding(.horizontal)
             
             ZStack(alignment: .leading) {
                 if memo.content == "" { // text editor placeholder
@@ -34,7 +32,6 @@ struct DetailView: View {
                         .foregroundColor(.gray)
                         .disabled(true)
                         .padding()
-
                 }
                 TextEditor(text: $memo.content)
                     .padding()
@@ -43,7 +40,6 @@ struct DetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline) // navigationtitle 자리 여백 삭제
         .toolbar(content: {
-            
             ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                 Button(action: {
                     guard let urlShare = URL(string: "https://developer.apple.com/xcode/swiftui/") else { return }
@@ -107,6 +103,7 @@ struct DetailView: View {
                 }
                 
                 Button(action: {
+                    ModelData().addMemo(folder: memo.folder, title: memo.title, content: memo.content)
                     dismiss()
                 }, label: {
                     Text("완료")

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Hashable: 
+
 struct Memo: Codable, Identifiable {
     var id: String
     var folder : String

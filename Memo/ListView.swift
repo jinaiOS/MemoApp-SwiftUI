@@ -10,18 +10,24 @@ import SwiftUI
 struct ListView: View {
     @EnvironmentObject var modelData : ModelData
     @State var memo: Memo
-    
-    @State private var selectedMore = ""
+    @State private var searchText = ""
     
     var body: some View {
-        List(modelData.memos) { memo in
-            NavigationLink {
-                DetailView(memo: memo)
-            } label: {
-                ListViewRow(memo: memo)
+        VStack {
+            SearchBar(searchText: $searchText)
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                .background(Color(uiColor: .secondarySystemBackground))
+            
+            List(modelData.memos) { memo in
+                NavigationLink {
+                    DetailView(memo: memo)
+                } label: {
+                    ListViewRow(memo: memo)
+                }
             }
         }
-//        .navigationTitle(folderName)
+        .background(Color(uiColor: .secondarySystemBackground))
+        .navigationTitle(memo.folder)
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Menu {

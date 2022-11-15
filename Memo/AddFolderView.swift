@@ -26,7 +26,30 @@ struct AddFolderView: View {
                     Button {
                         
                     } label: {
-                        Text("qq")
+                        NavigationLink {
+                            
+                        } label: {
+                            HStack() {
+                                Image(systemName: "gearshape.circle.fill")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.yellow)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("스마트 폴더로 만들기")
+                                        .font(.title3)
+                                    
+                                    Text("태그 및 기타 필터를 사용하여 정리")
+                                        .font(.subheadline)
+                                }
+                                .foregroundColor(.black)
+                            }
+                                .frame(maxWidth: .infinity).padding()
+                            // 최대한 늘려서 양 옆에 붙임
+                                .frame(height: 70)
+                                .background(.white)
+                                .cornerRadius(10)
+                        }
                     }
                 }
                 .padding(14)
@@ -53,5 +76,12 @@ struct AddFolderView: View {
     
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
+    }
+}
+
+struct AddFolderView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddFolderView()
+            .environmentObject(ModelData())
     }
 }
