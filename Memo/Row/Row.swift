@@ -8,22 +8,14 @@
 import SwiftUI
 
 struct Row: View {
-    @ObservedObject var memo: MemoEntity
+    var memo: Memo
     
     var body: some View {
         Image(systemName: "folder")
             .foregroundColor(.yellow)
         
-        Text(memo.folder ?? "")
+        Text(memo.folder)
         
         Spacer() // View 간의 간격을 띄우고 싶을 때
-    }
-}
-
-struct List_Previews: PreviewProvider {
-    static var previews: some View {
-        Row(
-            memo: MemoEntity(context: CoreDataManager.shared.mainContext)
-        )
     }
 }

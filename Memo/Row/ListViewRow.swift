@@ -8,29 +8,22 @@
 import SwiftUI
 
 struct ListViewRow: View {
-    @ObservedObject var memo: MemoEntity
+    var memo: Memo
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(memo.title ?? "")
+            Text(memo.title)
                 .font(.headline)
             
             HStack {
                 Image(systemName: "folder")
                 
-                Text(memo.folder ?? "")
+                Text(memo.folder)
                     .font(.subheadline)
             }
             .foregroundColor(.gray)
             .padding(-0.1)
+            .frame(height: 50)
         }
-    }
-}
-
-struct ListViewRow_Previews: PreviewProvider {
-    static var previews: some View {
-        ListViewRow(
-            memo: MemoEntity(context: CoreDataManager.shared.mainContext)
-        )
     }
 }

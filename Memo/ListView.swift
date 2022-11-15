@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct ListView: View {
-    @EnvironmentObject var manager: CoreDataManager
-    @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)])
-    var memoList: FetchedResults<MemoEntity>
+    @EnvironmentObject var modelData : ModelData
+    @State var memo: Memo
+    
     @State private var selectedMore = ""
     
     var body: some View {
-        List {
-            ForEach(memoList) { memo in
-                NavigationLink {
-                    DetailView(memo: memo)
-                } label: {
-                    ListViewRow(memo: memo)
-                }
+        List(modelData.memos) { memo in
+            NavigationLink {
+                DetailView(memo: memo)
+            } label: {
+                ListViewRow(memo: memo)
             }
         }
 //        .navigationTitle(folderName)
@@ -148,11 +146,5 @@ struct ListView: View {
                 }
             })
         })
-    }
-}
-
-struct ListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView()
     }
 }

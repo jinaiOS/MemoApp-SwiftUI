@@ -6,20 +6,17 @@
 //
 
 import Foundation
-import SwiftUI
 
-class Memo: Identifiable, ObservableObject {
-    let id: UUID
-    @Published var content: String
-    @Published var title: String
-    @Published var folder: String
-    let insertData: Date
+struct Memo: Codable, Identifiable {
+    var id: String
+    var folder : String
+    var title : String
+    var content : String
     
-    init(title: String, content: String, insertData: Date = Date.now, folder: String) {
-        id = UUID()
-        self.content = content
-        self.insertData = insertData
-        self.title = title
+    init(id: String = UUID().uuidString, folder: String, title: String, content: String) {
+        self.id = id
         self.folder = folder
+        self.title = title
+        self.content = content
     }
 }

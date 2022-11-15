@@ -2,20 +2,23 @@
 //  MemoApp.swift
 //  Memo
 //
-//  Created by 김지은 on 2022/11/04.
+//  Created by 김지은 on 2022/11/15.
 //
 
 import SwiftUI
 
 @main
 struct MemoApp: App {
-    let manager = CoreDataManager.shared
+    
+//    @StateObject var listViewModel: ListViewModel = ListViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(CoreDataManager.shared)
-                .environment(\.managedObjectContext, CoreDataManager.shared.mainContext)
+            NavigationView {
+                ContentView()
+            }
+//            .navigationViewStyle(StackNavigationViewStyle())
+//            .environmentObject(listViewModel)
         }
     }
 }

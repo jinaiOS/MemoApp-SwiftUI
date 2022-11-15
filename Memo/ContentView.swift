@@ -9,11 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var manager: CoreDataManager // 전달 없이 공용으로 사용 가능
+    @EnvironmentObject var modelData: ModelData // 전달 없이 공용으로 사용 가능
     @State private var searchText = "" // 변수값이 변경되면 view 를 다시 랜더링 하기 때문에 항상 최신 값을 가짐
-    
-    @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)])
-    var memoList: FetchedResults<MemoEntity>
+    @State var showDetailView = false
+    @State var showAddFolderView = false
     
     var body: some View {
         NavigationView {
@@ -22,15 +21,15 @@ struct ContentView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     .background(Color(uiColor: .secondarySystemBackground))
                 
-                List {
-                    ForEach(memoList) { element in
+                List{
+                    ForEach(modelData.memos) { memo in
                         NavigationLink {
-                            ListView()
+                            ListView(memo: memo)
                         } label: {
-                            Row(memo: element)
+                            Row(memo: memo)
                         }
+                        .frame(height: 36)
                     }
-                    .frame(height: 36)
                 }
             }
             .navigationTitle("폴더")
@@ -39,19 +38,22 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button(action: {
-                        
+                        self.showAddFolderView.toggle()
                     }, label: {
                         Image(systemName: "folder.badge.plus")
                     })
                     
                     Spacer()
                     
-                    Button(action: {
+                    NavigationLink {
                         
-                    }, label: {
+                    } label: {
                         Image(systemName: "square.and.pencil")
-                    })
+                    }
                 }
+            }
+            .sheet(isPresented: $showAddFolderView) {
+                AddFolderView(showAddFolderView: $showAddFolderView)
             }
         }
         .accentColor(.yellow) // navigationview 글자 색상
@@ -61,7 +63,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(CoreDataManager.shared)
-            .environment(\.managedObjectContext, CoreDataManager.shared.mainContext)
+            .environmentObject(ModelData())
     }
 }
