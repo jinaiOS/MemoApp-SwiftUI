@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddFolderView: View {
     @Environment(\.presentationMode) var presentationMode // 화면 이동 설정
+    // 읽기 전용으로 특정 뷰에서 EnvironmentValues의 특정 요소를 읽어와 뷰 구성에 반영할 때 사용
     @EnvironmentObject var modelData: ModelData
     
     @State var folderName: String = "새로운 폴더"

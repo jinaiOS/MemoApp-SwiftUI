@@ -28,16 +28,54 @@ struct ListView: View {
         }
         .background(Color(uiColor: .secondarySystemBackground))
         .navigationTitle(memo.folder)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
+        .navigationBarItems(trailing:  Menu {
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Text("갤러리로 보기")
+                    
+                    Image(systemName: "square.grid.2x2")
+                }
+            })
+            
+            Section {
+                Button(action: {
+                    
+                }, label: {
+                    HStack {
+                        Text("메모 선택")
+                        
+                        Image(systemName: "checkmark.seal")
+                    }
+                })
                 Menu {
                     Button(action: {
                         
                     }, label: {
                         HStack {
-                            Text("갤러리로 보기")
-                            
-                            Image(systemName: "square.grid.2x2")
+                            Text("기본값(편집일)")
+                        }
+                    })
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text("편집일")
+                        }
+                    })
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text("생성일")
+                        }
+                    })
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text("제목")
                         }
                     })
                     
@@ -46,111 +84,80 @@ struct ListView: View {
                             
                         }, label: {
                             HStack {
-                                Text("메모 선택")
-                                
-                                Image(systemName: "checkmark.seal")
+                                Text("최신 항목 순으로")
                             }
                         })
-                        Menu {
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("기본값(편집일)")
-                                }
-                            })
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("편집일")
-                                }
-                            })
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("생성일")
-                                }
-                            })
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("제목")
-                                }
-                            })
-                            
-                            Section {
-                                Button(action: {
-                                    
-                                }, label: {
-                                    HStack {
-                                        Text("최신 항목 순으로")
-                                    }
-                                })
-                                Button(action: {
-                                    
-                                }, label: {
-                                    HStack {
-                                        Text("오래된 항목 순으로")
-                                    }
-                                })
-                            }
-                            
-                        } label: {
-                            HStack {
-                                Text("다음으로 정렬")
-                                
-                                Image(systemName: "arrow.up.arrow.down")
-                            }
-                        }
-                        
-                        Menu {
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("기본값(켬)")
-                                }
-                            })
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("켬")
-                                }
-                            })
-                            Button(action: {
-                                
-                            }, label: {
-                                HStack {
-                                    Text("끔")
-                                }
-                            })
-                        } label: {
-                            HStack {
-                                Text("날짜별로 그룹화")
-                                
-                                Image(systemName: "calendar")
-                            }
-                        }
-                        
                         Button(action: {
                             
                         }, label: {
                             HStack {
-                                Text("첨부 파일 보기")
-                                
-                                Image(systemName: "paperclip")
+                                Text("오래된 항목 순으로")
                             }
                         })
                     }
                     
                 } label: {
-                    Image(systemName: "ellipsis.circle")
+                    HStack {
+                        Text("다음으로 정렬")
+                        
+                        Image(systemName: "arrow.up.arrow.down")
+                    }
                 }
-            })
+                
+                Menu {
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text("기본값(켬)")
+                        }
+                    })
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text("켬")
+                        }
+                    })
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text("끔")
+                        }
+                    })
+                } label: {
+                    HStack {
+                        Text("날짜별로 그룹화")
+                        
+                        Image(systemName: "calendar")
+                    }
+                }
+                
+                Button(action: {
+                    
+                }, label: {
+                    HStack {
+                        Text("첨부 파일 보기")
+                        
+                        Image(systemName: "paperclip")
+                    }
+                })
+            }
+            
+        } label: {
+            Image(systemName: "ellipsis.circle")
         })
+        .toolbar{
+            ToolbarItem(placement: .bottomBar){
+                NavigationLink {
+                    ForEach(modelData.memos) { memo in
+                        DetailView(memo: memo)
+                    }
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                }
+            }
+        }
     }
 }

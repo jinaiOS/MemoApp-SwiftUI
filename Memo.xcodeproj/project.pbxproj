@@ -21,7 +21,6 @@
 		56A6FCDF2914F1D20021A3B8 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A6FCDE2914F1D20021A3B8 /* Memo.swift */; };
 		56A77FD3291B3E7600A5BD27 /* MenuHStackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A77FD2291B3E7600A5BD27 /* MenuHStackButton.swift */; };
 		56AA8F69291E1D0E0008C648 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56AA8F68291E1D0E0008C648 /* Launch Screen.storyboard */; };
-		56AA8F6B291E23E70008C648 /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AA8F6A291E23E70008C648 /* AddListView.swift */; };
 		56ADF6C329234F1E00D9A820 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADF6C229234F1E00D9A820 /* ModelData.swift */; };
 		56ADF6CA29237AD000D9A820 /* AddFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADF6C929237AD000D9A820 /* AddFolderView.swift */; };
 		56ADF6CC29237C9400D9A820 /* MemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADF6CB29237C9400D9A820 /* MemoApp.swift */; };
@@ -62,7 +61,6 @@
 		56A6FCDE2914F1D20021A3B8 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		56A77FD2291B3E7600A5BD27 /* MenuHStackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHStackButton.swift; sourceTree = "<group>"; };
 		56AA8F68291E1D0E0008C648 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		56AA8F6A291E23E70008C648 /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 		56ADF6C229234F1E00D9A820 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		56ADF6C929237AD000D9A820 /* AddFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderView.swift; sourceTree = "<group>"; };
 		56ADF6CB29237C9400D9A820 /* MemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoApp.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				56C40242291A10B3008E1AEA /* CustomUtil */,
 				56A6FCAD2914EE0E0021A3B8 /* ContentView.swift */,
 				56ADF6C929237AD000D9A820 /* AddFolderView.swift */,
-				56AA8F6A291E23E70008C648 /* AddListView.swift */,
 				56A6FCD82914EEB40021A3B8 /* ListView.swift */,
 				56A6FCD62914EE4F0021A3B8 /* DetailView.swift */,
 				56C40244291A115A008E1AEA /* Row */,
@@ -317,7 +314,6 @@
 			files = (
 				56ADF6CA29237AD000D9A820 /* AddFolderView.swift in Sources */,
 				56A77FD3291B3E7600A5BD27 /* MenuHStackButton.swift in Sources */,
-				56AA8F6B291E23E70008C648 /* AddListView.swift in Sources */,
 				56ADF6CC29237C9400D9A820 /* MemoApp.swift in Sources */,
 				56A6FCD92914EEB40021A3B8 /* ListView.swift in Sources */,
 				56A6FCAE2914EE0E0021A3B8 /* ContentView.swift in Sources */,

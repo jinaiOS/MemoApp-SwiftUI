@@ -10,15 +10,10 @@ import SwiftUI
 @main
 struct MemoApp: App {
     
-//    @StateObject var listViewModel: ListViewModel = ListViewModel()
-    
     var body: some Scene {
         WindowGroup {
-            NavigationView {
                 ContentView()
-            }
-//            .navigationViewStyle(StackNavigationViewStyle())
-//            .environmentObject(listViewModel)
+                    .environmentObject(ModelData())
         }
     }
 }

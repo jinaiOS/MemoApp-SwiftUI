@@ -39,6 +39,8 @@ struct DetailView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline) // navigationtitle 자리 여백 삭제
+        // Toolbar: 현재 컨텍스트와 연관됨
+        // Tabbar: 현재 컨텍스트와 연관x
         .toolbar(content: {
             ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                 Button(action: {
