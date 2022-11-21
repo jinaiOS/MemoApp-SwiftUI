@@ -36,6 +36,7 @@ struct DetailView: View {
                 TextEditor(text: $memo.content)
                     .padding()
                     .opacity(self.content.isEmpty ? 0.25 : 1)
+                    .foregroundColor(.black)
             }
         }
         .navigationBarTitleDisplayMode(.inline) // navigationtitle 자리 여백 삭제

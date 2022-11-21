@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var modelData: ModelData // 전달 없이 공용으로 사용 가능
     @State private var searchText = "" // 변수값이 변경되면 view 를 다시 랜더링 하기 때문에 항상 최신 값을 가짐
     @State var showAddFolderView = false // modal 띄우는 bool
+    @State private var editMode = EditMode.inactive
     
     var body: some View {
         NavigationView {
@@ -20,7 +21,7 @@ struct ContentView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     .background(Color(uiColor: .secondarySystemBackground))
                 
-                List{
+                List {
                     ForEach(modelData.memos) { memo in
                         NavigationLink {
                             ListView(memo: memo)
@@ -30,6 +31,7 @@ struct ContentView: View {
                         .frame(height: 36)
                     }
                 }
+                .environment(\.editMode, $editMode)
             }
             .navigationTitle("폴더")
             .navigationBarItems(trailing: EditButton())
