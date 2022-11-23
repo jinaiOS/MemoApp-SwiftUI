@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct Row: View {
-    var memo: Memo
+    var folderName: String
     
     var body: some View {
         Image(systemName: "folder")
             .foregroundColor(.yellow)
         
-        Text(memo.folder)
+        Text(folderName)
         
         Spacer() // View 간의 간격을 띄우고 싶을 때
     }

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ListView: View {
-    @EnvironmentObject var modelData : ModelData
-    @State var memo: Memo
+    @EnvironmentObject var modelData: ModelData
+    var memo: [Memo]
+    var memoTitle: String
     @State private var searchText = ""
     
     var body: some View {
@@ -18,16 +19,22 @@ struct ListView: View {
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                 .background(Color(uiColor: .secondarySystemBackground))
             
-            List(modelData.memos) { memo in
+            List(memo) { memo in
                 NavigationLink {
-                    DetailView(memo: memo)
+                    DetailView(memo: memo,
+                               onSave: { memo in self.modelData.store(memo: memo) },
+                               onDelete: { memo in self.modelData.remove(memo: memo) }
+                    )
                 } label: {
                     ListViewRow(memo: memo)
                 }
             }
         }
+        .onAppear {
+            print("폴더 내의 리스트 뷰: \(memoTitle)")
+        }
         .background(Color(uiColor: .secondarySystemBackground))
-        .navigationTitle(memo.folder)
+        .navigationTitle(memoTitle)
         .navigationBarItems(trailing:  Menu {
             Button(action: {
                 
@@ -151,8 +158,11 @@ struct ListView: View {
         .toolbar{
             ToolbarItem(placement: .bottomBar){
                 NavigationLink {
-                    ForEach(modelData.memos) { memo in
-                        DetailView(memo: memo)
+                    ForEach(memo) { memo in
+                        DetailView(memo: memo,
+                                   onSave: { memo in self.modelData.store(memo: memo) },
+                                   onDelete: { memo in self.modelData.remove(memo: memo)}
+                        )
                     }
                 } label: {
                     Image(systemName: "square.and.pencil")

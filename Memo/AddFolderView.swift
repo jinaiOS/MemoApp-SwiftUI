@@ -60,6 +60,7 @@ struct AddFolderView: View {
                         Button("완료") {
                             modelData.addFolder(folder: folderName)
                             dismiss()
+                            print("새로운 폴더 생성 이름: \(folderName)")
                         }
                         .foregroundColor(.yellow)
                     }
@@ -72,6 +73,12 @@ struct AddFolderView: View {
                 }
             }
             .background(Color(uiColor: .secondarySystemBackground))
+            .onAppear {
+                print("폴더 모달")
+            }
+            .onDisappear {
+                print("폴더 모달 사라짐")
+            }
         }
     }
     
